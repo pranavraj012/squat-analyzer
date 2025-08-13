@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fitness Trainer - Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="demo-title">
+            <h1>💪 AI Fitness Trainer</h1>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h2>🎥 Live Stream Analysis</h2>
+                <p>Perform squats in front of your camera and receive real-time feedback on your form.</p>
+                <a href="{{ url_for('live_stream') }}" class="btn">Start Live Analysis</a>
+            </div>
+            <div class="feature-card">
+                <h2>📤 Video Upload Analysis</h2>
+                <p>Upload a video of your workout and get detailed feedback on your form.</p>
+                <a href="{{ url_for('upload_video') }}" class="btn">Upload Video</a>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Watch Our Demo</h3>
+            <p>This demo shows how the AI Fitness Trainer analyzes squat form and provides real-time feedback.
+                Pay attention to the visual cues and form corrections.</p>
+            <div class="demo-video" style="max-width: 800px; margin: 0 auto;">
+                <video id="demo-video" controls preload="auto" style="width: 100%; max-height: 450px; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <source src="{{ url_for('static', filename='outputs/output_sample.mp4') }}?v={{ range(1, 10000) | random }}" type="video/mp4">
+                    Your browser does not support the video tag or the video file cannot be loaded.
+                </video>
+            </div>
+            <div class="video-description">
+                <p>Can't see the video? Try these options:</p>
+                <ol>
+                    <li><a href="{{ url_for('static', filename='outputs/output_sample.mp4') }}" download>Download the video</a></li>
+                    <li><a href="{{ url_for('static', filename='outputs/output_sample.mp4') }}" target="_blank">Open in new tab</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>How It Works</h3>
+            <p>Our AI-powered fitness trainer uses computer vision to analyze your squats and provide immediate feedback. 
+               The system checks for proper form, detects common mistakes, and helps you improve your technique.</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 AI Fitness Trainer</p>
+    </footer>
+</body>
+</html>

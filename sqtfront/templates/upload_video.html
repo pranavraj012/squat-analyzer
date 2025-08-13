@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fitness Trainer - Video Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{{ url_for('index') }}">AI Fitness Trainer</a>
+            </div>
+            <div class="nav-links">
+                <a href="{{ url_for('live_stream') }}">Live Stream</a>
+                <a href="{{ url_for('upload_video') }}" class="active">Upload Video</a>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            <h1 class="page-title">📤 Video Analysis</h1>
+            
+            <div class="mode-selector">
+                <h3>Select Training Mode</h3>
+                <div class="mode-options">
+                    <label class="radio-container">
+                        <input type="radio" name="mode" value="Beginner" checked>
+                        <span class="checkmark"></span>
+                        Beginner
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="mode" value="Pro">
+                        <span class="checkmark"></span>
+                        Pro
+                    </label>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <h3>ℹ️ How to use</h3>
+                <ol>
+                    <li>Select your training mode (Beginner/Pro)</li>
+                    <li>Upload your workout video</li>
+                    <li>Wait for the analysis to complete</li>
+                    <li>Download the analyzed video with feedback</li>
+                </ol>
+            </div>
+
+            <div class="upload-container">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="file-input-container">
+                        <input type="file" name="file" id="fileInput" accept=".mp4,.mov,.avi">
+                        <label for="fileInput" class="file-label">Choose a video file</label>
+                        <span id="fileName">No file chosen</span>
+                    </div>
+                    <button type="submit" class="btn">📊 Analyze Video</button>
+                </form>
+                
+                <div id="loadingIndicator" class="loading-indicator hidden">
+                    <div class="spinner"></div>
+                    <p>Processing video...</p>
+                </div>
+            </div>
+            
+            <div id="resultContainer" class="result-container hidden">
+                <div class="video-comparison">
+                    <div class="video-box">
+                        <h3>Original Video</h3>
+                        <video id="originalVideo" controls width="100%" preload="auto"></video>
+                    </div>
+                    <div class="video-box">
+                        <h3>Analyzed Video</h3>
+                        <video id="processedVideo" controls width="100%" preload="auto">
+                            Your browser does not support HTML5 video.
+                        </video>
+                        <div id="videoError" style="color: red; display: none; margin-top: 10px;"></div>
+                    </div>
+                </div>
+                <div class="download-section">
+                    <a id="downloadBtn" class="btn" download>⬇️ Download Analyzed Video</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/upload_video.js') }}"></script>
+</body>
+</html>
